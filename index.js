@@ -9,7 +9,7 @@ dotenv.config();
 const intents = [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]
 const client = new Client({ intents });
 const modes = ['osu', 'taiko', 'fruits', 'mania'];
-const approved = ['Unranked 💀', 'Ranked ⏫', 'Approved ⏫', 'Qualified 🔼', 'Loved ❤'];
+const approved = ['Graveyard ⚰', 'WIP 🛠', 'Pending 🕒', 'Ranked ⏫', 'Approved ⏫', 'Qualified 🔼', 'Loved ❤'];
 const modsList = [
     'NoMod',
     'NoFail',
@@ -62,7 +62,7 @@ function generateEmbeds(replay) {
 
     if (replay.beatmap) {
         const beatmapFullTitle = `${replay.beatmap.artist} - ${replay.beatmap.title} [${replay.beatmap.version}]`;
-        const beatmapDescription = `${approved[replay.beatmap.approved]} | ${Number.parseFloat(replay.beatmap.difficultyrating).toFixed(2)}⭐ | ${replay.beatmap.bpm} BPM | ${countSeconds(replay.beatmap.total_length)}`;
+        const beatmapDescription = `${approved[parseInt(replay.beatmap.approved, 10) + 2]} | ${Number.parseFloat(replay.beatmap.difficultyrating).toFixed(2)}⭐ | ${replay.beatmap.bpm} BPM | ${countSeconds(replay.beatmap.total_length)}`;
 
         embed.setTitle(beatmapFullTitle)
             .setDescription(beatmapDescription)
