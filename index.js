@@ -79,7 +79,7 @@ function generateFields(replay) {
     const pp = replay.submitted_score ? (replay.submitted_score.pp ? Number.parseFloat(replay.submitted_score.pp).toFixed(2) : '--') : 'Unsubmitted';
     const accuracy = (replay.number_300s + (replay.number_100s / 3) + (replay.number_50s / 6)) / (replay.number_300s + replay.number_100s + replay.number_50s + replay.misses) * 100;
     const hits = `${replay.number_300s} | ${replay.number_100s} | ${replay.number_50s} | ${replay.misses}`
-    const combo = `${replay.max_combo}/${(replay?.beatmap?.max_combo ? replay?.beatmap?.max_combo : '')}x${replay.perfect_combo ? ' ✅' : ''}`;
+    const combo = `${replay.max_combo}${(replay?.beatmap?.max_combo ? '/' + replay?.beatmap?.max_combo : '')}x${replay.perfect_combo ? ' ✅' : ''}`;
 
     return [
         { name: 'Score', value: score, inline: true },
